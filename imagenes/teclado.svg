@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 250" role="img" aria-label="Teclado mecanico">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f6f2e9"/>
+    <stop offset="0.55" stop-color="#ece7db"/>
+    <stop offset="1" stop-color="#dde4d8"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#b8c6aa" stop-opacity="0.8"/>
+    <stop offset="1" stop-color="#506e58" stop-opacity="0.95"/>
+  </linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fffdf8"/>
+    <stop offset="0.45" stop-color="#d8ddd1"/>
+    <stop offset="1" stop-color="#8a9a87"/>
+  </linearGradient>
+  <linearGradient id="darkMetal" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7a8977"/>
+    <stop offset="1" stop-color="#344f3d"/>
+  </linearGradient>
+  <linearGradient id="accentPink" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#b8c6aa"/>
+    <stop offset="1" stop-color="#7f9274"/>
+  </linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#2f3a33" flood-opacity="0.5"/>
+  </filter>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="8"/>
+  </filter>
+</defs>
+<rect width="320" height="250" rx="24" fill="url(#bg)"/>
+<circle cx="282" cy="36" r="84" fill="#d7dfcf" opacity="0.09"/>
+<circle cx="44" cy="224" r="72" fill="#c5d0c0" opacity="0.11"/>
+<path d="M16 196c58-18 114-27 178-21 46 4 76 14 110 29v30H16z" fill="#d2d7ca" opacity="0.9"/>
+<ellipse cx="160" cy="210" rx="100" ry="18" fill="#4d534c" opacity="0.35"/>
+<g opacity="0.28" stroke="#b8c6aa" stroke-width="1.5" fill="none">
+  <path d="M34 53h60"/>
+  <path d="M46 66h36"/>
+  <path d="M245 182h39"/>
+  <path d="M236 194h48"/>
+</g>
+
+<g filter="url(#shadow)" transform="translate(32 58)">
+  <path d="M18 18h205l28 95H0z" fill="#566852" stroke="#e7ede2" stroke-opacity="0.45"/>
+  <path d="M36 32h170l17 58H22z" fill="#455948"/>
+  <g>
+    <rect x="30" y="36" width="18" height="12" rx="2.5" fill="#b8caa8"/><rect x="53" y="36" width="18" height="12" rx="2.5" fill="#afc19f"/><rect x="76" y="36" width="18" height="12" rx="2.5" fill="#c4d0b9"/><rect x="99" y="36" width="18" height="12" rx="2.5" fill="#a9bc98"/><rect x="122" y="36" width="18" height="12" rx="2.5" fill="#afc19f"/><rect x="145" y="36" width="18" height="12" rx="2.5" fill="#c4d0b9"/><rect x="168" y="36" width="18" height="12" rx="2.5" fill="#a9bc98"/><rect x="191" y="36" width="18" height="12" rx="2.5" fill="#afc19f"/><rect x="35" y="54" width="18" height="12" rx="2.5" fill="#7a8b73"/><rect x="58" y="54" width="18" height="12" rx="2.5" fill="#7f9079"/><rect x="81" y="54" width="18" height="12" rx="2.5" fill="#97a68b"/><rect x="104" y="54" width="18" height="12" rx="2.5" fill="#7d8d75"/><rect x="127" y="54" width="18" height="12" rx="2.5" fill="#91a084"/><rect x="150" y="54" width="18" height="12" rx="2.5" fill="#8d9d82"/><rect x="173" y="54" width="18" height="12" rx="2.5" fill="#87997d"/><rect x="196" y="54" width="18" height="12" rx="2.5" fill="#7d8d75"/><rect x="40" y="72" width="18" height="12" rx="2.5" fill="#697d64"/><rect x="63" y="72" width="18" height="12" rx="2.5" fill="#7a8b73"/><rect x="86" y="72" width="18" height="12" rx="2.5" fill="#86977f"/><rect x="109" y="72" width="18" height="12" rx="2.5" fill="#6c7f68"/><rect x="132" y="72" width="18" height="12" rx="2.5" fill="#86977f"/><rect x="155" y="72" width="18" height="12" rx="2.5" fill="#7a8b73"/><rect x="178" y="72" width="18" height="12" rx="2.5" fill="#86977f"/><rect x="201" y="72" width="18" height="12" rx="2.5" fill="#6c7f68"/><rect x="45" y="90" width="18" height="12" rx="2.5" fill="#92a185"/><rect x="68" y="90" width="18" height="12" rx="2.5" fill="#8a987d"/><rect x="91" y="90" width="18" height="12" rx="2.5" fill="#b8caa8"/><rect x="114" y="90" width="18" height="12" rx="2.5" fill="#8a987d"/><rect x="137" y="90" width="18" height="12" rx="2.5" fill="#8a987d"/><rect x="160" y="90" width="18" height="12" rx="2.5" fill="#b8caa8"/><rect x="183" y="90" width="18" height="12" rx="2.5" fill="#8a987d"/><rect x="206" y="90" width="18" height="12" rx="2.5" fill="#8a987d"/>
+    <rect x="76" y="92" width="92" height="12" rx="4" fill="#a9bc98"/>
+  </g>
+</g>
+
+</svg>

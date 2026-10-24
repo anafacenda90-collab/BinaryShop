@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BinaryShop</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="announcement">Tecnología para todos los días <span>•</span> Diseño, utilidad y buenos precios</div>
+<header>
+  <div class="brand-lockup"><div class="brand-icon" aria-hidden="true">B<span>•</span></div><h1>binary<span>shop</span></h1><span class="brand-caption">TECH & EVERYDAY</span></div>
+  <nav id="nav" hidden>
+    <button type="button" data-view="catalog">Catálogo</button>
+    <button type="button" data-view="seller" id="navSeller">Vender</button>
+    <button type="button" data-view="admin" id="navAdmin">Administrar</button>
+    <span id="who"></span>
+    <button type="button" id="logout" class="ghost">Salir</button>
+  </nav>
+</header>
+<!-- CORRECCIÓN 2: el carrito ahora es un botón flotante, siempre visible mientras haces scroll -->
+<div class="cart-wrap" id="cartWrap" hidden>
+  <button type="button" id="cartBtn">🛒 Carrito (<span id="cartCount">0</span>)</button>
+  <div id="cartDrop" class="drop" hidden></div>
+</div>
+<div id="toast" role="status"></div>
+
+<main>
+  <!-- ===== INICIAR SESIÓN ===== -->
+  <section id="login" class="box">
+    <p class="eyebrow auth-kicker">BIENVENIDO A BINARYSHOP</p><h2>Un buen lugar para<br><em>encontrar lo que buscas.</em></h2><p class="auth-subtitle">Inicia sesión y descubre nuestra selección de tecnología.</p>
+    <form id="loginForm" novalidate>
+      <label>Nickname <input id="lNick" autocomplete="username"></label>
+      <label>Contraseña <input id="lPass" type="password" autocomplete="current-password"></label>
+      <label>Entrar como
+        <select id="lRole"><option value="comprador">Comprador</option><option value="vendedor">Vendedor</option><option value="admin">Administrador</option></select>
+      </label>
+      <p id="lErr" class="err"></p>
+      <button type="submit">Entrar</button>
+      <p class="sw"><button type="button" class="link" id="toRecover">¿Olvidaste tu contraseña?</button></p>
+      <p class="sw">¿No tienes cuenta? <button type="button" class="link" id="toReg">Regístrate</button></p>
+      <p class="sw">Prueba: ana / 1234 (comprador y vendedor) · root / admin (administrador)<br>Para probar la recuperación: ana y ana@correo.com</p>
+    </form>
+  </section>
+
+  <!-- ===== REGISTRARSE ===== -->
+  <section id="register" class="box" hidden>
+    <h2>Crear cuenta</h2>
+    <form id="regForm" novalidate>
+      <fieldset>
+        <legend>Datos personales</legend>
+        <div class="two">
+          <label>Nombre <input id="rName"></label>
+          <label>Apellido <input id="rLast"></label>
+        </div>
+        <label>Correo electrónico <input id="rMail" type="email"></label>
+        <label>Fecha de nacimiento <input id="rBirth" type="date"></label>
+        <label>Dirección <input id="rAddr"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Cuenta</legend>
+        <div class="two">
+          <label>Nickname <input id="rNick" autocomplete="username"></label>
+          <label>Contraseña (mín. 4) <input id="rPass" type="password" autocomplete="new-password"></label>
+        </div>
+        <label class="chk"><input type="checkbox" id="rBuyer" checked> Quiero comprar</label>
+        <label class="chk"><input type="checkbox" id="rSeller"> Quiero vender</label>
+      </fieldset>
+      <fieldset>
+        <legend>Datos bancarios</legend>
+        <label>Titular de la tarjeta <input id="rHolder"></label>
+        <label>Número de tarjeta (16 dígitos) <input id="rCard" inputmode="numeric" maxlength="16"></label>
+        <div class="two">
+          <label>Vence (MM/AA) <input id="rExp" placeholder="08/28" maxlength="5"></label>
+          <label>CVV <input id="rCvv" inputmode="numeric" maxlength="3"></label>
+        </div>
+      </fieldset>
+      <p id="rErr" class="err"></p>
+      <button type="submit">Crear cuenta</button>
+      <p class="sw">¿Ya tienes cuenta? <button type="button" class="link" id="toLogin">Inicia sesión</button></p>
+      <p class="sw">Si ya eres comprador y quieres vender, usa tu mismo nickname y contraseña y marca “Quiero vender”.</p>
+    </form>
+  </section>
+
+  <!-- ===== RECUPERAR CONTRASEÑA ===== -->
+  <section id="recover" class="box" hidden>
+    <h2>Recuperar contraseña</h2>
+    <form id="recForm" novalidate>
+      <p class="sw">Escribe tu nickname y el correo con el que te registraste.</p>
+      <label>Nickname <input id="vNick" autocomplete="username"></label>
+      <label>Correo electrónico <input id="vMail" type="email"></label>
+      <p id="vErr" class="err"></p>
+      <button type="submit">Enviar código</button>
+      <p class="sw"><button type="button" class="link" id="recBack">Volver a iniciar sesión</button></p>
+    </form>
+    <form id="resetForm" novalidate hidden>
+      <p id="codeNote" class="note"></p>
+      <label>Código de 6 dígitos <input id="vCode" inputmode="numeric" maxlength="6"></label>
+      <label>Nueva contraseña (mín. 4) <input id="vPass" type="password" autocomplete="new-password"></label>
+      <label>Repite la nueva contraseña <input id="vPass2" type="password" autocomplete="new-password"></label>
+      <p id="wErr" class="err"></p>
+      <button type="submit">Cambiar contraseña</button>
+      <p class="sw"><button type="button" class="link" id="recBack2">Cancelar</button></p>
+    </form>
+  </section>
+
+  <section id="catalog" hidden>
+    <div class="catalog-intro"><div><p class="eyebrow">LA SELECCIÓN BINARY</p><h2>Todo lo que necesitas.<br><em>Nada de más.</em></h2><p class="intro-copy">Dispositivos y accesorios elegidos para acompañarte todos los días. Encuentra tu próximo favorito.</p></div><div class="intro-art" aria-hidden="true"><span class="intro-orbit"></span><span class="intro-center">B.</span><small>CURATED TECH<br>COLLECTION — 2026</small></div></div>
+    <div class="catalog-toolbar"><span class="catalog-label">Explora la colección</span><span class="catalog-count">12 productos seleccionados</span></div>
+    <input id="search" class="search" type="search" placeholder="Buscar producto (laptop, teclado, teléfono…)" autocomplete="off">
+    <div id="chips" class="chips"></div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <section id="seller" class="box" hidden>
+    <h2>Publicar un producto</h2>
+    <form id="prodForm" novalidate>
+      <label>Nombre <input id="pName"></label>
+      <label>Precio (USD) <input id="pPrice" type="number" min="0.01" step="0.01"></label>
+      <label>Categoría
+        <select id="pCat"><option>Computadoras</option><option>Teléfonos</option><option>Audio</option><option>Accesorios</option></select>
+      </label>
+      <label>Imagen <input id="pImg" type="file" accept="image/*"></label>
+      <p id="pErr" class="err"></p>
+      <button type="submit">Publicar</button>
+    </form>
+    <h2>Mis publicaciones</h2>
+    <ul id="myProds" class="list"></ul>
+    <h2>Mis ventas</h2>
+    <ul id="sales" class="list"></ul>
+  </section>
+
+  <section id="admin" hidden>
+    <h2>Usuarios</h2>
+    <ul id="userList" class="list"></ul>
+    <h2>Publicaciones</h2>
+    <ul id="prodList" class="list"></ul>
+  </section>
+
+  <section id="checkout" class="box" hidden>
+    <h2>Pago</h2>
+    <form id="payForm" novalidate>
+      <p id="payTotal"></p>
+      <ul id="payItems" class="list"></ul>
+      <label>Titular <input id="cName"></label>
+      <label>Tarjeta (16 dígitos) <input id="cNum" inputmode="numeric" maxlength="16"></label>
+      <div class="two">
+        <label>Vence (MM/AA) <input id="cExp" placeholder="08/28" maxlength="5"></label>
+        <label>CVV <input id="cCvv" inputmode="numeric" maxlength="3"></label>
+      </div>
+      <p id="cErr" class="err"></p>
+      <button type="submit">Pagar</button>
+      <button type="button" class="ghost" id="payCancel">Cancelar</button>
+    </form>
+  </section>
+</main>
+<footer class="site-footer"><div><strong>binary<span>shop</span></strong><p>Objetos útiles. Buenos detalles.</p></div><span>Una mejor forma de elegir tecnología.</span><small>© 2026 BinaryShop</small></footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
